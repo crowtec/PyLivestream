@@ -44,7 +44,6 @@ def stream_file(
 
     S.golive()
 
-
 def stream_files(
     ini_file: Path,
     websites: list[str],
@@ -77,6 +76,40 @@ def stream_files(
             playonce(flist, still_image, websites, ini_file, shuffle, usemeta, assume_yes)
     else:
         playonce(flist, still_image, websites, ini_file, shuffle, usemeta, assume_yes)
+
+
+def stream_files_ordered(
+    ini_file: Path,
+    websites: list[str],
+    *,
+    video_paths: list[str],
+    glob: str = None,
+    assume_yes: bool = False,
+    loop: bool = None,
+    shuffle: bool = None,
+    still_image: Path = None,
+    no_meta: bool = None,
+    timeout: float = None,
+):
+    # %% file / glob wranging
+    # flist = fileglob(video_path, glob)
+
+    print("streaming these files. Be sure list is correct! \n")
+    print("\n".join(map(str, video_paths)))
+    print()
+
+    if assume_yes:
+        print("going live on", websites)
+    else:
+        input(f"Press Enter to go live on {websites}.    Or Ctrl C to abort.")
+
+    usemeta = no_meta
+
+    if loop:
+        while True:
+            playonce(video_paths, still_image, websites, ini_file, shuffle, usemeta, assume_yes)
+    else:
+        playonce(video_paths, still_image, websites, ini_file, shuffle, usemeta, assume_yes)
 
 
 def stream_microphone(
