@@ -5,7 +5,6 @@ from .api import (
     stream_microphone,
     stream_file,
     stream_files,
-    stream_files_ordered,
     stream_screen,
     capture_screen,
     stream_webcam,

@@ -93,7 +93,7 @@ def stream_files_ordered(
     timeout: float = None,
 ):
     # %% file / glob wranging
-    flist = map(lambda s: Path(s), video_path)
+    flist = list(map(lambda s: Path(s), video_paths))
 
     print("streaming these files. Be sure list is correct! \n")
     print("\n".join(map(str, video_paths)))
