@@ -18,6 +18,7 @@ from .glob import fileglob, playonce
 __all__ = [
     "stream_file",
     "stream_files",
+    "stream_files_ordered",
     "stream_microphone",
     "stream_webcam",
     "stream_screen",
