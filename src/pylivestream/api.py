@@ -93,7 +93,7 @@ def stream_files_ordered(
     timeout: float = None,
 ):
     # %% file / glob wranging
-    # flist = fileglob(video_path, glob)
+    flist = map(lambda s: Path(s), video_path)
 
     print("streaming these files. Be sure list is correct! \n")
     print("\n".join(map(str, video_paths)))
@@ -108,9 +108,9 @@ def stream_files_ordered(
 
     if loop:
         while True:
-            playonce(video_paths, still_image, websites, ini_file, shuffle, usemeta, assume_yes)
+            playonce(flist, still_image, websites, ini_file, shuffle, usemeta, assume_yes)
     else:
-        playonce(video_paths, still_image, websites, ini_file, shuffle, usemeta, assume_yes)
+        playonce(flist, still_image, websites, ini_file, shuffle, usemeta, assume_yes)
 
 
 def stream_microphone(
