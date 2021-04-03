@@ -32,7 +32,7 @@ def stream_file(
     video_file: Path,
     loop: bool = None,
     assume_yes: bool = False,
-    timeout: float = None,
+    timeout: float = None
 ):
     S = FileIn(ini_file, websites, infn=video_file, loop=loop, yes=assume_yes, timeout=timeout)
     sites: T.List[str] = list(S.streams.keys())
@@ -57,7 +57,7 @@ def stream_files(
     shuffle: bool = None,
     still_image: Path = None,
     no_meta: bool = None,
-    timeout: float = None,
+    timeout: float = None
 ):
     # %% file / glob wranging
     flist = fileglob(video_path, glob)
@@ -79,6 +79,7 @@ def stream_files(
     else:
         playonce(flist, still_image, websites, ini_file, shuffle, usemeta, assume_yes)
 
+
 def stream_files_ordered(
     ini_file: Path,
     websites: list[str],
@@ -90,7 +91,7 @@ def stream_files_ordered(
     shuffle: bool = None,
     still_image: Path = None,
     no_meta: bool = None,
-    timeout: float = None,
+    timeout: float = None
 ):
     # %% file / glob wranging
     flist = list(map(lambda s: Path(s), video_paths))
@@ -112,13 +113,14 @@ def stream_files_ordered(
     else:
         playonce(flist, still_image, websites, ini_file, shuffle, usemeta, assume_yes)
 
+
 def stream_microphone(
     ini_file: Path,
     websites: T.Sequence[str],
     *,
     still_image: Path = None,
     assume_yes: bool = False,
-    timeout: float = None,
+    timeout: float = None
 ):
     """
     livestream audio, with still image background
